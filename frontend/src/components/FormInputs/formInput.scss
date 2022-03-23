@@ -1,0 +1,40 @@
+@import "../../theme/variables.scss";
+
+.form-inputs {
+  .input {
+    width: 100%;
+    border: 1px solid $text-lightmode-grey;
+    border-radius: 5px;
+    padding: 0 15px;
+    color: $text-darkmode-white;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+
+    i {
+      color: $text-lightmode-black;
+    }
+    input {
+      background-color: transparent;
+      width: 100% !important;
+      border: none;
+      outline: none;
+      padding: 15px 0px 15px 20px;
+      width: auto;
+      font-size: 14px;
+    }
+  }
+}
+.global.dark-theme {
+  .form-inputs {
+    .input {
+      i {
+        color: $text-darkmode-grey;
+      }
+      input {
+        color: $text-darkmode-white;
+        background-color: transparent;
+      }
+    }
+  }
+}

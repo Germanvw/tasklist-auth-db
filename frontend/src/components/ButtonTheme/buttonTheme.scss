@@ -1,0 +1,18 @@
+.btn {
+  max-width: 80px;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.btn-light {
+  background-color: #ffffff;
+  border: 1px solid #292929;
+  border-radius: 15px;
+}
+.btn-dark {
+  background-color: #292929;
+  border: 1px solid #fff;
+  border-radius: 15px;
+  color: #fff;
+}

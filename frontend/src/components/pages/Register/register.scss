@@ -1,0 +1,106 @@
+@import "../../../theme/variables.scss";
+.form-full-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $background-light;
+
+  .form-body {
+    background-color: $background-white;
+    color: $text-lightmode-grey;
+    width: 400px;
+    height: 650px;
+    border-radius: 15px;
+    padding: 25px 30px;
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+
+      .form-header {
+        display: flex;
+        flex-direction: column;
+        h2 {
+          color: $text-lightmode-black;
+        }
+        .subtitle {
+          margin-top: 15px;
+          color: $text-lightmode-dark;
+        }
+      }
+      .form-main {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        form {
+          width: 100%;
+
+          .submit {
+            background-color: $purple;
+            font-weight: bold;
+            color: $background-white;
+            width: 100%;
+            padding: 15px 50px;
+            margin: 20px 0 40px 0;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .form-footer {
+        display: flex;
+        justify-content: center;
+        .link {
+          text-decoration: none;
+          font-weight: bold;
+          color: $background-dark;
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+}
+.form-body.form-login {
+  height: 550px;
+}
+
+.global.dark-theme {
+  .form-full-container {
+    background-color: $background-black;
+    color: $text-lightmode-grey;
+
+    .form-body {
+      background-color: $background-dark;
+
+      .form-container {
+        .form-header {
+          h2 {
+            color: $text-darkmode-white;
+          }
+          .subtitle {
+            color: $text-darkmode-grey;
+          }
+        }
+        .form-main {
+          form {
+            .submit {
+              background-color: #5268f4;
+            }
+          }
+        }
+
+        .form-footer {
+          .link {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
