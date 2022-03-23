@@ -5,7 +5,7 @@ import { fetchNoToken, fetchToken } from "../../hooks/useFetch";
 
 export const startAuthLogin = (form: { email: string; password: string }) => {
   return async (dispatch: any) => {
-    const req = await fetchNoToken("login", form, "POST");
+    const req = await fetchNoToken("auth/login", form, "POST");
     const answ = await req.json();
 
     if (answ.status) {
@@ -27,7 +27,7 @@ export const startAuthRegister = async (
   },
   navigate: any
 ) => {
-  const req = await fetchNoToken("register", form, "POST");
+  const req = await fetchNoToken("auth/register", form, "POST");
   const answ = await req.json();
 
   if (answ.status) {
@@ -50,7 +50,7 @@ export const startAuthRegister = async (
 
 export const startAuthValidation = () => {
   return async (dispatch: any) => {
-    const req = await fetchToken("renew", {});
+    const req = await fetchToken("auth/renew", {});
 
     const answ = await req.json();
     console.log(answ);

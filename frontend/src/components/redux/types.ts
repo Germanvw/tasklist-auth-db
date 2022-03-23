@@ -12,4 +12,13 @@ export const types = {
   authLogin: "[Auth] Login user",
   authLogout: "[Auth] Logout user",
   authEndValidation: "[Auth] Finish validation",
+
+  // Task
+  taskFetchAll: "[Task] Fetch all tasks",
+  taskDelete: "[Task] Delete a task",
+  taskCreate: "[Task] Create a task",
+  taskEdit: "[Task] Create a task",
+
+  taskSetActive: "[Task] Set active task",
+  taskClearActive: "[Task] Clear active task",
 };
