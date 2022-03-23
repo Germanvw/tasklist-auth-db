@@ -7,4 +7,9 @@ export const types = {
   uiClearError: "[UI] Clear  Error",
 
   uiChangeTheme: "[UI] Change Dark/Light Theme",
+
+  // Auth
+  authLogin: "[Auth] Login user",
+  authLogout: "[Auth] Logout user",
+  authEndValidation: "[Auth] Finish validation",
 };

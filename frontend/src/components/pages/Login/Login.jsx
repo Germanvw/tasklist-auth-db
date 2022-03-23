@@ -2,6 +2,9 @@ import { FormInput } from "../../FormInputs/FormInput";
 import { Link } from "react-router-dom";
 import { ButtonTheme } from "../../ButtonTheme/ButtonTheme";
 import { useForm } from "../../hooks/useForm";
+import { validateLogin } from "../../helpers/validateForms";
+import { startAuthLogin } from "../../redux/actions/authActions";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Login = () => {
   const loginInputs = [
@@ -17,14 +20,21 @@ export const Login = () => {
     },
   ];
 
-  const [value, handleChange] = useForm({
+  const [value, handleChange, clear] = useForm({
     email: "",
     password: "",
   });
+  const dispatch = useDispatch();
+  const { errorMsg } = useSelector((state) => state.ui);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(value);
+    if (validateLogin(value, dispatch)) {
+      dispatch(startAuthLogin(value));
+      clear();
+    } else {
+      console.log(errorMsg);
+    }
   };
 
   return (

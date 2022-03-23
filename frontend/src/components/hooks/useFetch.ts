@@ -1,14 +1,7 @@
 const baseUrl = process.env.REACT_APP_API;
 
-interface fetchProps {
-  endpoint: string;
-  data: any;
-  method: string;
-}
-
-const fetchNoToken = ({ endpoint, data, method = "GET" }: fetchProps) => {
+const fetchNoToken = (endpoint: string, data: any, method = "GET") => {
   const url = `${baseUrl}/${endpoint}`;
-
   if (method === "GET") {
     return fetch(url);
   } else {
@@ -22,7 +15,7 @@ const fetchNoToken = ({ endpoint, data, method = "GET" }: fetchProps) => {
   }
 };
 
-const fetchToken = ({ endpoint, data, method = "GET" }: fetchProps) => {
+const fetchToken = (endpoint: string, data: any, method = "GET") => {
   const url = `${baseUrl}/${endpoint}`;
   const token = localStorage.getItem("x-token") || "";
 

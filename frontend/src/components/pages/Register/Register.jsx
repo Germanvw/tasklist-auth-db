@@ -2,10 +2,12 @@ import { FormInput } from "../../FormInputs/FormInput";
 import { Link } from "react-router-dom";
 import { ButtonTheme } from "../../ButtonTheme/ButtonTheme";
 import { useForm } from "../../hooks/useForm";
+import { useNavigate } from "react-router";
+import { validateRegister } from "../../helpers/validateForms";
+import { useDispatch, useSelector } from "react-redux";
+import { startAuthRegister } from "../../redux/actions/authActions";
 
 import "./register.scss";
-import { validateForms } from "../../helpers/validateForms";
-import { useDispatch, useSelector } from "react-redux";
 
 export const Register = () => {
   const registerInputs = [
@@ -31,20 +33,23 @@ export const Register = () => {
     },
   ];
 
-  const [value, handleChange] = useForm({
+  const [value, handleChange, clear] = useForm({
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
+  const { username, email, password } = value;
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { errorMsg } = useSelector((state) => state.ui);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateForms(value, dispatch)) {
-      console.log(value);
+    if (validateRegister(value, dispatch)) {
+      dispatch(startAuthRegister({ username, email, password }, navigate));
+      clear();
     } else {
       console.log(errorMsg);
     }
