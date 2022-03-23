@@ -1,11 +1,19 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { unauthRoutes, authRoutes } from "./routes";
-import { useSelector } from "react-redux";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { RootState } from "../redux/reducers/rootReducer";
-import "../../index";
+import { startAuthValidation } from "../redux/actions/authActions";
 
+import "../../index";
 export const AppRouter = (): any => {
+  const dispatch = useDispatch();
   const { darkMode } = useSelector((state: RootState) => state.ui);
+
+  useEffect(() => {
+    console.log("correr");
+    dispatch(startAuthValidation());
+  }, [dispatch]);
   return (
     <BrowserRouter>
       <div className={`global ${darkMode && "dark-theme "}`}>

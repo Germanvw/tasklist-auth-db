@@ -5,7 +5,7 @@ const validateErrors = (req, res, next) => {
 
   if (!errors.isEmpty()) {
     return res.status(400).json({
-      ok: false,
+      status: false,
       errors: errors.mapped(),
     });
   }

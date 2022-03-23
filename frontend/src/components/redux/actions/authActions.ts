@@ -1,7 +1,7 @@
 import { types } from "../types";
 
 import Swal, { SweetAlertOptions } from "sweetalert2";
-import { fetchNoToken } from "../../hooks/useFetch";
+import { fetchNoToken, fetchToken } from "../../hooks/useFetch";
 
 export const startAuthLogin = (form: { email: string; password: string }) => {
   return async (dispatch: any) => {
@@ -46,6 +46,29 @@ export const startAuthRegister = async (
     //Register error
     Swal.fire("Error", answ.msg, "error");
   }
+};
+
+export const startAuthValidation = () => {
+  return async (dispatch: any) => {
+    const req = await fetchToken("renew", {});
+
+    const answ = await req.json();
+    console.log(answ);
+    if (answ.status) {
+      localStorage.setItem("x-token", answ.token);
+
+      dispatch(
+        authLogin({
+          uid: answ.uid,
+          username: answ.name,
+        })
+      );
+    } else {
+      //Register error
+      localStorage.removeItem("x-token");
+      dispatch(authEndValidation());
+    }
+  };
 };
 
 const authEndValidation = () => ({

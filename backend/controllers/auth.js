@@ -72,7 +72,7 @@ const renewToken = async (req, res) => {
   try {
     const { uid, username } = req;
     const token = await generateJWT(uid, username);
-    return res.json({ ok: true, token, uid, username });
+    return res.json({ status: true, token, uid, username });
   } catch (err) {
     return res
       .status(500)

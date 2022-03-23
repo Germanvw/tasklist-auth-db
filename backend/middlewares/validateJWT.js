@@ -6,8 +6,8 @@ const validateJWT = (req, res, next) => {
 
   if (!token) {
     return res.status(401).json({
-      ok: false,
-      msg: "No existe el token de autenticacion",
+      status: false,
+      msg: "Authentication token doesnt exist",
     });
   }
 
@@ -20,8 +20,8 @@ const validateJWT = (req, res, next) => {
   } catch (err) {
     console.log(err);
     return res.status(401).json({
-      ok: false,
-      msg: "Token invalido",
+      status: false,
+      msg: "Invalid token",
     });
   }
 
