@@ -18,6 +18,9 @@ app.use(express.json());
 //api/auth
 app.use("/api/auth", require("./routes/auth"));
 
+//api/task
+app.use("/api/task", require("./routes/task"));
+
 app.listen(process.env.PORT, () => {
   console.log(`Running at port: `, process.env.PORT);
 });
