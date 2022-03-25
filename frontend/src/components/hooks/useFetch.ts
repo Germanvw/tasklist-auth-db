@@ -18,7 +18,6 @@ const fetchNoToken = (endpoint: string, data: any, method = "GET") => {
 const fetchToken = (endpoint: string, data: any, method = "GET") => {
   const url = `${baseUrl}/${endpoint}`;
   const token = localStorage.getItem("x-token") || "";
-  console.log(url);
   if (method === "GET") {
     return fetch(url, {
       method,

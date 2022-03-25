@@ -38,7 +38,6 @@ export const startAuthRegister = async (
       icon: "success",
     } as SweetAlertOptions).then((result) => {
       if (result.value) {
-        console.log("here");
         navigate("/login", { replace: true });
       }
     });
@@ -53,7 +52,6 @@ export const startAuthValidation = () => {
     const req = await fetchToken("auth/renew", {});
 
     const answ = await req.json();
-    console.log(answ);
     if (answ.status) {
       localStorage.setItem("x-token", answ.token);
 

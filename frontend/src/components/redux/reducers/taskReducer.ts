@@ -26,7 +26,7 @@ export const taskReducer: Reducer = (state = initialState, action: any) => {
         ...state,
         tasks: action.payload,
       };
-
+    case types.taskCreate:
       return {
         ...state,
         tasks: [...state.tasks, action.payload],
@@ -36,13 +36,15 @@ export const taskReducer: Reducer = (state = initialState, action: any) => {
       return {
         ...state,
         tasks: state.tasks.map((task: any) =>
-          task._id === action.payload._id ? action.payload.task : task
+          task._id === action.payload._id ? action.payload : task
         ),
+        active: null,
       };
     case types.taskDelete:
       return {
         ...state,
         tasks: state.tasks.filter((task: any) => task._id !== action.payload),
+        active: null,
       };
     default:
       return state;

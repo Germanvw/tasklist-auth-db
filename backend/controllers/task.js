@@ -5,7 +5,7 @@ const createTask = async (req, res) => {
   try {
     task.user = req.uid;
     const eventDB = await task.save();
-    await eventDB.populate("user", "-password");
+    console.log(eventDB);
     return res.status(201).json({
       status: true,
       msg: "Task created successfully",
@@ -50,8 +50,7 @@ const editTask = async (req, res) => {
   const taskId = req.params.id;
   const { title, description } = req.body;
   try {
-    const task = await Task.findById({ _id: taskId });
-
+    let task = await Task.findById({ _id: taskId });
     if (!task) {
       return res.status(404).json({
         status: false,
@@ -64,11 +63,20 @@ const editTask = async (req, res) => {
       return res.status(403).json({ status: false, msg: "Not authorized" });
     }
 
-    await Task.findByIdAndUpdate(taskId, { title, description });
+    task = await Task.findByIdAndUpdate(
+      taskId,
+      {
+        title,
+        description,
+      },
+      { returnOriginal: false }
+    );
 
-    return res
-      .status(200)
-      .json({ status: true, msg: "Task edited successfully" });
+    return res.status(200).json({
+      status: true,
+      msg: "Task edited successfully",
+      task,
+    });
   } catch (err) {
     return res
       .status(500)

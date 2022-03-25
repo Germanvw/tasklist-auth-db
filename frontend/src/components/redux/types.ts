@@ -17,7 +17,7 @@ export const types = {
   taskFetchAll: "[Task] Fetch all tasks",
   taskDelete: "[Task] Delete a task",
   taskCreate: "[Task] Create a task",
-  taskEdit: "[Task] Create a task",
+  taskEdit: "[Task] Edit a task",
 
   taskSetActive: "[Task] Set active task",
   taskClearActive: "[Task] Clear active task",
